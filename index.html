@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	 <link rel="stylesheet" href="todo.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body ng-app="todoApp">
+
+<br><br><br>
+<center>
+<h1>Todo App</h1>
+<br> <br>
+</center>
+<div ng-controller="TodoCtrl">
+<center>
+    <div class="header">
+        <input type="text" placeholder="Enter Todo" ng-model="newTodo.text" ng-keypress="keypress()" autofocus="true">
+        <input type="hidden" value="false" ng-model="newTodo.completed">
+	
+		 <button type="button" ng-click="add()">
+          <span class="glyphicon glyphicon-plus"></span> Add
+        </button>
+		
+    </div>
+</center>
+    <br>
+    <div class="border" ng-repeat="item in todos">
+        <input class="check" type="checkbox" ng-model="item.completed">
+        <span ng-bind="item.text" ng-class="{'completed': item.completed}"></span>
+		<button type="button" ng-click="delete($index)">
+          <span class="glyphicon glyphicon-remove"></span>
+        </button>
+    </div>
+<center>
+    <br>
+		<a href="#" ng-click="clearCompleted()">
+          <span class="glyphicon glyphicon-ok"></span>Complete 
+        </a>
+</center>					
+</div>
+</center>
+<script src="app/lib/angular.min.js"></script>
+<script src="app/scripts/todo/todo.module.js"></script>
+<script src="app/scripts/todo/controllers/todo.controller.js"></script>
+<script src="app/scripts/todo/services/todo.service.js"></script>
+<script src="app/scripts/app.js"></script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<footer>
+Copyright @ 2017-Youtube.com by: Joe Maddalone
+</footer>
+<body>
+
+</html>
